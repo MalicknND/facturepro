@@ -35,7 +35,7 @@ export default async function EditClientPage({
           </Link>
         </Button>
       </div>
-      <Card className="max-w-2xl">
+      <Card className="w-full max-w-2xl">
         <CardHeader>
           <CardTitle>Modifier le client</CardTitle>
           <p className="text-sm text-slate-500">

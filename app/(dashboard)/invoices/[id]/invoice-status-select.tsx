@@ -44,7 +44,7 @@ export function InvoiceStatusSelect({
       onChange={handleChange}
       disabled={isPending}
       aria-label="Changer le statut de la facture"
-      className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-0 disabled:opacity-50"
+      className="max-w-full min-w-0 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-0 disabled:opacity-50"
     >
       {OPTIONS.map((opt) => (
         <option key={opt.value} value={opt.value}>

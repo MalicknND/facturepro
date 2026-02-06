@@ -12,8 +12,8 @@ export function ClientsTable({ clients }: { clients: Client[] }) {
     );
   }
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm">
+    <div className="-mx-4 overflow-x-auto sm:mx-0">
+      <table className="w-full min-w-[520px] text-sm">
         <thead>
           <tr className="border-b border-slate-200">
             <th className="pb-3 text-left font-medium">Nom</th>

@@ -208,7 +208,7 @@ export function QuoteForm({
             <p className="mt-1 text-sm text-red-600">{errors.client_id.message}</p>
           )}
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row">
           <div className="flex-1">
             <Label>Date d&apos;émission *</Label>
             <Input type="date" {...register("issue_date")} className="mt-1" />
@@ -231,7 +231,7 @@ export function QuoteForm({
           </Button>
         </div>
         <div className="mt-2 overflow-x-auto rounded-lg border border-slate-200">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[420px] text-sm">
             <thead>
               <tr className="border-b border-slate-200 bg-slate-50">
                 <th className="p-2 text-left font-medium">Description</th>
@@ -287,15 +287,15 @@ export function QuoteForm({
         </div>
       </div>
       <div className="flex flex-col items-end gap-2 rounded-lg bg-slate-50 p-4">
-        <div className="flex w-64 justify-between text-sm">
+        <div className="flex w-full max-w-64 justify-between text-sm">
           <span>Sous-total HT</span>
           <span>{formatCurrency(totals.subtotalHT)}</span>
         </div>
-        <div className="flex w-64 justify-between text-sm">
+        <div className="flex w-full max-w-64 justify-between text-sm">
           <span>TVA ({vatRate}%)</span>
           <span>{formatCurrency(totals.tva)}</span>
         </div>
-        <div className="flex w-64 justify-between font-semibold">
+        <div className="flex w-full max-w-64 justify-between font-semibold">
           <span>Total TTC</span>
           <span>{formatCurrency(totals.totalTTC)}</span>
         </div>

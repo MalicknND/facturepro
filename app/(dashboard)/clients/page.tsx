@@ -26,7 +26,7 @@ export default async function ClientsPage({
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-slate-900">
+        <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">
           Clients
         </h1>
         <Button asChild>
@@ -38,24 +38,24 @@ export default async function ClientsPage({
       </div>
 
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between gap-4">
-          <CardTitle>Liste des clients</CardTitle>
-          <form className="flex gap-2" method="get" action="/clients">
-            <div className="relative">
+        <CardHeader className="flex flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <CardTitle className="shrink-0">Liste des clients</CardTitle>
+          <form className="flex w-full min-w-0 gap-2 sm:w-auto" method="get" action="/clients">
+            <div className="relative min-w-0 flex-1 sm:flex-initial sm:w-64">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
               <Input
                 name="q"
                 placeholder="Rechercher (nom, email)..."
                 defaultValue={q}
-                className="w-64 pl-9"
+                className="w-full pl-9"
               />
             </div>
-            <Button type="submit" variant="secondary">
+            <Button type="submit" variant="secondary" className="shrink-0">
               Rechercher
             </Button>
           </form>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-4 pb-6 pt-0 sm:px-6">
           <ClientsTable clients={clients || []} />
         </CardContent>
       </Card>

@@ -39,7 +39,7 @@ export default async function InvoicesPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-slate-900">
+        <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">
           Factures
         </h1>
         <Button asChild>
@@ -51,13 +51,13 @@ export default async function InvoicesPage() {
       </div>
 
       <Card>
-        <CardHeader>
+        <CardHeader className="px-4 sm:px-6">
           <CardTitle>Liste des factures</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-4 pb-6 pt-0 sm:px-6">
           {invoices && invoices.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="-mx-4 overflow-x-auto sm:mx-0">
+              <table className="w-full min-w-[640px] text-sm">
                 <thead>
                   <tr className="border-b border-slate-200">
                     <th className="pb-3 text-left font-medium">N°</th>
@@ -98,7 +98,7 @@ export default async function InvoicesPage() {
                         <td className="py-3 pr-4 text-right font-medium">
                           {formatCurrency(totalTTC)}
                         </td>
-                        <td className="py-3 pl-2">
+                        <td className="min-w-0 py-3 pl-2">
                           <InvoiceStatusSelect
                             invoiceId={inv.id}
                             currentStatus={inv.status as InvoiceStatus}

@@ -107,7 +107,7 @@ export function ClientForm({
         <Label htmlFor="siret">SIRET (optionnel)</Label>
         <Input id="siret" {...register("siret")} className="mt-1" placeholder="14 chiffres" />
       </div>
-      <div className="flex gap-2 pt-2">
+      <div className="flex flex-wrap gap-2 pt-2">
         <Button type="submit" disabled={isSubmitting}>
           {client ? "Enregistrer" : "Créer le client"}
         </Button>

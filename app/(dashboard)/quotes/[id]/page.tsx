@@ -116,7 +116,7 @@ export default async function QuoteDetailPage({
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full min-w-[400px] text-sm">
               <thead>
                 <tr className="border-b border-slate-200">
                   <th className="pb-3 text-left font-medium">Description</th>
@@ -138,15 +138,15 @@ export default async function QuoteDetailPage({
             </table>
           </div>
           <div className="mt-4 flex flex-col items-end gap-1 rounded-lg bg-slate-50 p-4">
-            <div className="flex w-56 justify-between text-sm">
+            <div className="flex w-full max-w-56 justify-between text-sm">
               <span>Sous-total HT</span>
               <span>{formatCurrency(subtotalHT)}</span>
             </div>
-            <div className="flex w-56 justify-between text-sm">
+            <div className="flex w-full max-w-56 justify-between text-sm">
               <span>TVA ({quote.vat_rate}%)</span>
               <span>{formatCurrency(tva)}</span>
             </div>
-            <div className="flex w-56 justify-between font-semibold">
+            <div className="flex w-full max-w-56 justify-between font-semibold">
               <span>Total TTC</span>
               <span>{formatCurrency(totalTTC)}</span>
             </div>

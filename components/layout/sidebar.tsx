@@ -11,7 +11,7 @@ import {
   Settings,
 } from "lucide-react";
 
-const nav = [
+export const dashboardNav = [
   { href: "/dashboard", label: "Tableau de bord", icon: LayoutDashboard },
   { href: "/clients", label: "Clients", icon: Users },
   { href: "/invoices", label: "Factures", icon: FileText },
@@ -22,14 +22,14 @@ const nav = [
 export function Sidebar() {
   const pathname = usePathname();
   return (
-    <aside className="flex w-56 flex-col border-r border-slate-200/80 bg-white">
+    <aside className="hidden w-56 flex-col border-r border-slate-200/80 bg-white md:flex">
       <div className="p-5">
         <Link href="/dashboard" className="flex items-center gap-2 font-bold tracking-tight text-slate-900">
           <span className="text-xl">FacturePro</span>
         </Link>
       </div>
       <nav className="flex flex-1 flex-col gap-1 px-3 pb-4">
-        {nav.map((item) => {
+        {dashboardNav.map((item) => {
           const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
           return (
             <Link

@@ -118,8 +118,8 @@ export default async function DashboardPage() {
         </CardHeader>
         <CardContent>
           {invoices && invoices.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+            <div className="-mx-4 overflow-x-auto sm:mx-0">
+              <table className="w-full min-w-[480px] text-sm">
                 <thead>
                   <tr className="border-b border-slate-200">
                     <th className="pb-3 text-left font-medium">N°</th>
