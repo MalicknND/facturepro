@@ -25,12 +25,18 @@ export async function updateSession(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const isAuthPage = pathname === "/login" || pathname === "/signup";
   const isLanding = pathname === "/";
+  const isPublicPage =
+    isLanding ||
+    isAuthPage ||
+    pathname === "/mentions-legales" ||
+    pathname === "/politique-confidentialite" ||
+    pathname === "/contact";
   if (user && (isAuthPage || isLanding)) {
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     return NextResponse.redirect(url);
   }
-  if (!user && !isAuthPage && !isLanding) {
+  if (!user && !isPublicPage) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
