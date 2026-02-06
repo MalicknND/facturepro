@@ -4,10 +4,10 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
-import { QuoteStatusBadge } from "@/components/ui/status-badge";
 import { ArrowLeft, FileText, Download } from "lucide-react";
 import type { QuoteStatus } from "@/types/database";
 import { ConvertToInvoiceButton } from "./convert-to-invoice";
+import { QuoteStatusSelect } from "./quote-status-select";
 
 export default async function QuoteDetailPage({
   params,
@@ -62,8 +62,12 @@ export default async function QuoteDetailPage({
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <QuoteStatusBadge status={quote.status as QuoteStatus} />
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-sm font-medium text-slate-600">Statut :</span>
+          <QuoteStatusSelect
+            quoteId={quote.id}
+            currentStatus={quote.status as QuoteStatus}
+          />
           <Button asChild variant="outline" size="sm" className="gap-2">
             <a href={`/api/quotes/${quote.id}/pdf`} target="_blank" rel="noopener noreferrer">
               <Download className="h-4 w-4" />

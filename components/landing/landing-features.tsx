@@ -60,7 +60,7 @@ export function LandingFeatures() {
         <div
           className={cn(
             "rounded-2xl border-2 border-emerald-200/80 bg-white p-6 shadow-lg shadow-emerald-500/5 sm:p-8",
-            "ring-2 ring-emerald-500/10"
+            "ring-2 ring-emerald-500/10",
           )}
         >
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">

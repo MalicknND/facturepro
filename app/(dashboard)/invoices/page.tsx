@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
-import { InvoiceStatusBadge } from "@/components/ui/status-badge";
 import { Plus } from "lucide-react";
-import type { Invoice, InvoiceStatus } from "@/types/database";
+import type { InvoiceStatus } from "@/types/database";
+import { InvoiceStatusSelect } from "./[id]/invoice-status-select";
 
 export default async function InvoicesPage() {
   const supabase = await createClient();
@@ -99,7 +99,10 @@ export default async function InvoicesPage() {
                           {formatCurrency(totalTTC)}
                         </td>
                         <td className="py-3">
-                          <InvoiceStatusBadge status={inv.status as InvoiceStatus} />
+                          <InvoiceStatusSelect
+                            invoiceId={inv.id}
+                            currentStatus={inv.status as InvoiceStatus}
+                          />
                         </td>
                         <td className="py-3 text-right">
                           <Link

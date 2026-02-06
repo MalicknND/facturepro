@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
-import { QuoteStatusBadge } from "@/components/ui/status-badge";
 import { Plus } from "lucide-react";
 import type { QuoteStatus } from "@/types/database";
+import { QuoteStatusSelect } from "./[id]/quote-status-select";
 
 export default async function QuotesPage() {
   const supabase = await createClient();
@@ -95,7 +95,10 @@ export default async function QuotesPage() {
                           {formatCurrency(totalTTC)}
                         </td>
                         <td className="py-3">
-                          <QuoteStatusBadge status={q.status as QuoteStatus} />
+                          <QuoteStatusSelect
+                            quoteId={q.id}
+                            currentStatus={q.status as QuoteStatus}
+                          />
                         </td>
                         <td className="py-3 text-right">
                           <Link

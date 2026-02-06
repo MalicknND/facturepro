@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { formatCurrency, formatDate } from "@/lib/utils";
-import { InvoiceStatusBadge } from "@/components/ui/status-badge";
 import { ArrowLeft, Download, Send } from "lucide-react";
 import type { InvoiceStatus } from "@/types/database";
+import { InvoiceStatusSelect } from "./invoice-status-select";
 
 export default async function InvoiceDetailPage({
   params,
@@ -61,8 +61,12 @@ export default async function InvoiceDetailPage({
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <InvoiceStatusBadge status={invoice.status as InvoiceStatus} />
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-sm font-medium text-slate-600">Statut :</span>
+          <InvoiceStatusSelect
+            invoiceId={invoice.id}
+            currentStatus={invoice.status as InvoiceStatus}
+          />
           <Button asChild variant="outline" size="sm" className="gap-2">
             <a href={`/api/invoices/${id}/pdf`} target="_blank" rel="noopener noreferrer">
               <Download className="h-4 w-4" />
