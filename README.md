@@ -1,79 +1,145 @@
 # FacturePro
 
-Application web (FR) pour générer des devis et factures en tant que freelance.
+Application web en français pour créer et gérer **devis** et **factures** en tant que freelance. Interface moderne, export PDF et tableau de bord simple.
 
-## Fonctionnalités MVP
+![Stack](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Supabase](https://img.shields.io/badge/Supabase-Auth%20%2B%20DB-green?logo=supabase)
 
-- **Auth** : Connexion email / mot de passe (Supabase Auth)
-- **Dashboard** : KPIs (factures du mois, impayés, CA)
-- **Clients** : CRUD, recherche, lien « Nouvelle facture »
-- **Devis** : Lignes dynamiques, numérotation D-YYYY-0001, statuts (Brouillon, Envoyé, Accepté, Refusé), **Convertir en facture**
-- **Factures** : Lignes dynamiques, numérotation F-YYYY-0001, dates émission/échéance, statuts, **Télécharger PDF**
-- **Paramètres** : Profil entreprise, logo, TVA (dont franchise art. 293 B), conditions de paiement, mentions légales
-- **PDF** : Template A4 (logo, en-tête, client, tableau, totaux HT/TVA/TTC, mentions)
+---
+
+## Fonctionnalités
+
+| Module | Description |
+|--------|-------------|
+| **Authentification** | Connexion / inscription par email (Supabase Auth) |
+| **Tableau de bord** | KPIs (factures du mois, CA, impayés), dernières factures |
+| **Clients** | Liste, recherche, création / édition. Type **Particulier** ou **Entreprise** (raison sociale, SIRET/SIREN, personne à contacter) |
+| **Devis** | Lignes dynamiques, numérotation D-YYYY-0001, statuts (Brouillon, Envoyé, Accepté, Refusé), **convertir en facture**, PDF |
+| **Factures** | Lignes dynamiques, numérotation F-YYYY-0001, émission/échéance, statuts (Brouillon, Envoyée, Payée, En retard), **téléchargement PDF** |
+| **Paramètres** | Profil entreprise (nom, adresse, logo), TVA (dont franchise 293 B), conditions de paiement, mentions légales |
+| **Landing** | Page d’accueil publique, fonctionnalités, conformité France, liens légaux |
+
+L’application est **responsive** (menu mobile, tableaux scrollables, formulaires adaptés).
+
+---
 
 ## Prérequis
 
-- Node.js 18+
-- Compte [Supabase](https://supabase.com)
+- **Node.js** 18+
+- Compte [Supabase](https://supabase.com) (gratuit)
+
+---
 
 ## Installation
 
 ```bash
+git clone <repo>
+cd facture
 npm install
-cp .env.example .env
 ```
 
-1. Créez un projet Supabase, récupérez l’URL et la clé anon (Settings > API).
-2. Renseignez `.env` :
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-3. Dans l’éditeur SQL Supabase, exécutez le schéma : `supabase/schema.sql`
-4. (Optionnel) Créez un bucket Storage `logos` (public) pour les logos entreprise, ou laissez le schéma le créer.
-5. Créez un utilisateur : Auth > Users > Add user (email + mot de passe) ou inscrivez-vous depuis l’app (`/login` avec un lien « S’inscrire » si vous l’ajoutez).
+### 1. Variables d’environnement
 
-## Lancer l’app
+Créez un fichier `.env.local` à la racine (ou copiez `.env.example` si présent) :
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://votre-projet.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=votre_cle_anon
+```
+
+Récupérez l’URL et la clé anon dans Supabase : **Settings → API**.
+
+### 2. Base de données
+
+1. Dans l’**éditeur SQL** Supabase, exécutez dans l’ordre :
+   - `supabase/schema.sql` (tables, RLS, storage)
+   - `supabase/migrations/20260206_client_type.sql` (si le schéma n’inclut pas déjà `client_type` / `contact_name`)
+
+2. (Optionnel) Créez un bucket Storage **logos** (public) pour les logos entreprise, ou laissez le script du schéma le faire.
+
+### 3. Premier utilisateur
+
+- **Inscription** : allez sur `/signup` et créez un compte.
+- Ou dans Supabase : **Authentication → Users → Add user**.
+
+---
+
+## Lancer l’application
 
 ```bash
 npm run dev
 ```
 
-Ouvrez [http://localhost:3000](http://localhost:3000). Vous serez redirigé vers `/login` puis, après connexion, vers `/dashboard`.
+Ouvrez [http://localhost:3000](http://localhost:3000).
 
-## Parcours rapide (créer une facture en &lt; 2 min)
+- **Non connecté** : page d’accueil (landing), liens Connexion / Créer un compte.
+- **Connecté** : redirection vers `/dashboard`.
 
-1. **Paramètres** : Renseigner au moins le nom de l’entreprise (et optionnellement logo, TVA, mentions).
-2. **Clients** : Créer un client (nom, email, etc.).
-3. **Factures** > **Nouvelle facture** : Choisir le client, ajouter des lignes (description, quantité, prix unitaire). Les totaux se calculent automatiquement.
-4. Cliquer **Valider** (ou **Enregistrer brouillon** puis modifier).
+---
+
+## Parcours rapide (facture en moins de 2 min)
+
+1. **Paramètres** : renseigner au moins le nom de l’entreprise (logo, TVA, mentions optionnels).
+2. **Clients** : **Nouveau client** → choisir Particulier ou Entreprise, remplir nom/raison sociale, coordonnées, SIRET ou SIREN (9 ou 14 chiffres).
+3. **Factures** → **Nouvelle facture** : sélectionner le client, ajouter des lignes (description, quantité, prix unitaire). Les totaux HT/TVA/TTC se calculent automatiquement.
+4. **Valider** (ou **Enregistrer brouillon** puis modifier).
 5. Sur la page de la facture : **Télécharger PDF**.
 
-## Données de démo
+---
 
-Voir `supabase/seed.sql` pour un exemple de profil entreprise et clients. Remplacez `YOUR_USER_ID` / `USER_ID` par l’UUID de votre utilisateur (Auth > Users dans Supabase) avant d’exécuter les inserts.
+## Données de démonstration
+
+Le fichier `supabase/seed.sql` contient un jeu de données (profil entreprise, clients, devis, factures).  
+Remplacez toutes les occurrences de l’UUID utilisateur par le vôtre (Supabase → **Authentication → Users**), puis exécutez le script dans l’éditeur SQL.
+
+---
+
+## Scripts
+
+| Commande | Description |
+|----------|-------------|
+| `npm run dev` | Serveur de développement |
+| `npm run build` | Build de production |
+| `npm run start` | Démarrer le serveur après build |
+| `npm run lint` | Vérification ESLint |
+
+---
 
 ## Structure des routes
 
 | Route | Description |
 |-------|-------------|
-| `/login` | Connexion |
-| `/dashboard` | Tableau de bord (KPIs, dernières factures) |
-| `/clients` | Liste + recherche |
-| `/clients/new` | Nouveau client |
-| `/clients/[id]/edit` | Modifier client |
+| `/` | Landing (accueil public) |
+| `/login`, `/signup` | Connexion, inscription |
+| `/dashboard` | Tableau de bord |
+| `/clients` | Liste clients + recherche |
+| `/clients/new`, `/clients/[id]/edit` | Création / édition client |
 | `/invoices` | Liste factures |
-| `/invoices/new` | Nouvelle facture |
-| `/invoices/[id]` | Détail + PDF |
-| `/invoices/[id]/edit` | Modifier (brouillon uniquement) |
+| `/invoices/new`, `/invoices/[id]`, `/invoices/[id]/edit` | Création, détail, édition facture |
 | `/quotes` | Liste devis |
-| `/quotes/new` | Nouveau devis |
-| `/quotes/[id]` | Détail + PDF + Convertir en facture |
-| `/quotes/[id]/edit` | Modifier devis (brouillon) |
-| `/settings` | Profil entreprise, TVA, conditions, mentions |
+| `/quotes/new`, `/quotes/[id]`, `/quotes/[id]/edit` | Création, détail, édition devis |
+| `/settings` | Profil entreprise (paramètres) |
+| `/mentions-legales`, `/politique-confidentialite`, `/contact` | Pages légales et contact |
 
-## Stack
+---
 
-- **Next.js 16** (App Router), TypeScript, Tailwind CSS
+## Stack technique
+
+- **Next.js 16** (App Router), **TypeScript**, **Tailwind CSS**
 - **Supabase** : Auth, PostgreSQL, Storage (logos)
 - **Formulaires** : react-hook-form, zod, @hookform/resolvers
 - **PDF** : jspdf, jspdf-autotable
+- **UI** : composants personnalisés, Lucide icons, Framer Motion (landing)
+
+---
+
+## Documentation détaillée
+
+Voir **[DOC.md](./DOC.md)** pour l’architecture, le schéma de base de données, les flux métier, l’API et le déploiement.
+
+---
+
+## Licence
+
+Projet privé / usage personnel ou commercial selon votre contexte.
