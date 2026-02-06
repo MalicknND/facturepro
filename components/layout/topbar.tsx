@@ -41,9 +41,15 @@ export function Topbar() {
           <Menu className="h-5 w-5" />
         </Button>
         <div className="flex-1 md:hidden" />
-        <Button variant="ghost" size="sm" onClick={signOut} className="gap-2">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={signOut}
+          className="gap-2 md:hidden"
+          aria-label="Déconnexion"
+        >
           <LogOut className="h-4 w-4" />
-          <span className="hidden sm:inline">Déconnexion</span>
+          Déconnexion
         </Button>
       </header>
 
@@ -78,7 +84,7 @@ export function Topbar() {
                 <X className="h-5 w-5" />
               </Button>
             </div>
-            <nav className="flex flex-1 flex-col gap-1 p-3">
+            <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-3">
               {dashboardNav.map((item) => {
                 const isActive =
                   pathname === item.href ||
@@ -101,6 +107,19 @@ export function Topbar() {
                 );
               })}
             </nav>
+            <div className="border-t border-slate-200 p-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  signOut();
+                }}
+                className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+              >
+                <LogOut className="h-5 w-5 shrink-0" />
+                Déconnexion
+              </button>
+            </div>
           </div>
         </div>
       )}

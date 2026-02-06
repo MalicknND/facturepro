@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
@@ -9,6 +10,7 @@ import {
   FileText,
   FileSpreadsheet,
   Settings,
+  LogOut,
 } from "lucide-react";
 
 export const dashboardNav = [
@@ -21,6 +23,15 @@ export const dashboardNav = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  async function signOut() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    router.push("/login");
+    router.refresh();
+  }
+
   return (
     <aside className="hidden w-56 flex-col border-r border-slate-200/80 bg-white md:flex">
       <div className="p-5">
@@ -48,6 +59,16 @@ export function Sidebar() {
           );
         })}
       </nav>
+      <div className="border-t border-slate-200/80 p-3">
+        <button
+          type="button"
+          onClick={signOut}
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
+        >
+          <LogOut className="h-5 w-5 shrink-0" />
+          Déconnexion
+        </button>
+      </div>
     </aside>
   );
 }
