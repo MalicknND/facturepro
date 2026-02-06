@@ -6,10 +6,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("fr-FR", {
+  const parts = new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR",
-  }).format(value);
+  }).formatToParts(value);
+  return parts
+    .map((p) => (p.type === "group" ? " " : p.value))
+    .join("");
 }
 
 export function formatDate(date: string | Date): string {

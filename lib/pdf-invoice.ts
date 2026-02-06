@@ -47,10 +47,13 @@ function formatDate(dateStr: string): string {
 }
 
 function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("fr-FR", {
+  const parts = new Intl.NumberFormat("fr-FR", {
     style: "currency",
     currency: "EUR",
-  }).format(value);
+  }).formatToParts(value);
+  return parts
+    .map((p) => (p.type === "group" ? " " : p.value))
+    .join("");
 }
 
 export function generatePdf(data: DocData): jsPDF {
