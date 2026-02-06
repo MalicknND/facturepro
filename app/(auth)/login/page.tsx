@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -76,6 +77,15 @@ export default function LoginPage() {
             Pas encore de compte ?{" "}
             <Link href="/signup" className="font-medium text-emerald-600 hover:underline">
               Créer un compte
+            </Link>
+          </p>
+          <p className="text-center">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-emerald-600"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Retour à l&apos;accueil
             </Link>
           </p>
         </form>

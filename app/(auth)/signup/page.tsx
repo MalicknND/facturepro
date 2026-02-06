@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft } from "lucide-react";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -44,6 +45,15 @@ export default function SignupPage() {
           </p>
           <p className="mt-2 text-center text-sm text-slate-500">
             Redirection vers la connexion...
+          </p>
+          <p className="mt-4 text-center">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-emerald-600"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Retour à l&apos;accueil
+            </Link>
           </p>
         </CardContent>
       </Card>
@@ -97,6 +107,15 @@ export default function SignupPage() {
             Déjà un compte ?{" "}
             <Link href="/login" className="font-medium text-emerald-600 hover:underline">
               Se connecter
+            </Link>
+          </p>
+          <p className="text-center">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-emerald-600"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Retour à l&apos;accueil
             </Link>
           </p>
         </form>
