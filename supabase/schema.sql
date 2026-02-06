@@ -26,6 +26,8 @@ CREATE TABLE IF NOT EXISTS clients (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   name TEXT NOT NULL,
+  client_type TEXT NOT NULL DEFAULT 'person' CHECK (client_type IN ('person', 'company')),
+  contact_name TEXT,
   address TEXT,
   email TEXT,
   phone TEXT,

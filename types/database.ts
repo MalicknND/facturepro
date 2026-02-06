@@ -19,10 +19,14 @@ export interface CompanyProfile {
   updated_at: string;
 }
 
+export type ClientType = "person" | "company";
+
 export interface Client {
   id: string;
   user_id: string;
   name: string;
+  client_type?: ClientType;
+  contact_name?: string | null;
   address: string | null;
   email: string | null;
   phone: string | null;

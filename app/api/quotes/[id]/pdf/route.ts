@@ -65,6 +65,8 @@ export async function GET(
     },
     client: {
       name: client.name,
+      client_type: ((client as { client_type?: string }).client_type ?? "person") as "person" | "company",
+      contact_name: (client as { contact_name?: string | null }).contact_name ?? null,
       address: client.address,
       email: client.email,
       phone: client.phone,

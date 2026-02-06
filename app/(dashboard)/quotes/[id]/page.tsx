@@ -92,6 +92,11 @@ export default async function QuoteDetailPage({
           </CardHeader>
           <CardContent className="space-y-1 text-sm">
             <p className="font-medium">{client?.name}</p>
+            {(client as { client_type?: string; contact_name?: string | null })?.contact_name && (
+              <p className="text-slate-600">
+                À l&apos;attention de : {(client as { contact_name?: string }).contact_name}
+              </p>
+            )}
             {client?.address && <p className="text-slate-600">{client.address}</p>}
             {client?.email && <p>{client.email}</p>}
             {client?.phone && <p>{client.phone}</p>}

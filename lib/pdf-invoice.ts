@@ -14,6 +14,8 @@ interface CompanyProfile {
 
 interface Client {
   name: string;
+  client_type?: "person" | "company";
+  contact_name?: string | null;
   address?: string | null;
   email?: string | null;
   phone?: string | null;
@@ -109,11 +111,22 @@ export function generatePdf(data: DocData): jsPDF {
 
   // Bloc client
   y = Math.max(y, 50);
+  const isCompany = data.client.client_type === "company";
   doc.setFont("helvetica", "bold").setFontSize(10).text("Client", 20, y);
   y += 6;
   doc.setFont("helvetica", "normal");
-  doc.text(data.client.name, 20, y);
-  y += 5;
+  if (isCompany) {
+    doc.setFont("helvetica", "bold").text(data.client.name, 20, y);
+    y += 5;
+    if (data.client.contact_name) {
+      doc.setFont("helvetica", "normal").text(`À l'attention de : ${data.client.contact_name}`, 20, y);
+      y += 5;
+    }
+    doc.setFont("helvetica", "normal");
+  } else {
+    doc.text(data.client.name, 20, y);
+    y += 5;
+  }
   if (data.client.address) {
     doc.text(data.client.address, 20, y);
     y += 5;
