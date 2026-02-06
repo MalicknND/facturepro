@@ -63,8 +63,8 @@ export default async function QuotesPage() {
                     <th className="pb-3 text-left font-medium">N°</th>
                     <th className="pb-3 text-left font-medium">Client</th>
                     <th className="pb-3 text-left font-medium">Date</th>
-                    <th className="pb-3 text-right font-medium">Total TTC</th>
-                    <th className="pb-3 text-left font-medium">Statut</th>
+                    <th className="pb-3 pr-4 text-right font-medium">Total TTC</th>
+                    <th className="pb-3 pl-2 text-left font-medium">Statut</th>
                     <th className="pb-3 text-right font-medium">Actions</th>
                   </tr>
                 </thead>
@@ -91,10 +91,10 @@ export default async function QuotesPage() {
                         <td className="py-3 text-slate-600">
                           {formatDate(q.issue_date)}
                         </td>
-                        <td className="py-3 text-right font-medium">
+                        <td className="py-3 pr-4 text-right font-medium">
                           {formatCurrency(totalTTC)}
                         </td>
-                        <td className="py-3">
+                        <td className="py-3 pl-2">
                           <QuoteStatusSelect
                             quoteId={q.id}
                             currentStatus={q.status as QuoteStatus}
