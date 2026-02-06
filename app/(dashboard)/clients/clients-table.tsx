@@ -19,7 +19,7 @@ export function ClientsTable({ clients }: { clients: Client[] }) {
             <th className="pb-3 text-left font-medium">Nom</th>
             <th className="pb-3 text-left font-medium">Email</th>
             <th className="pb-3 text-left font-medium">Téléphone</th>
-            <th className="pb-3 text-left font-medium">SIRET</th>
+            <th className="pb-3 text-left font-medium">SIRET / SIREN</th>
             <th className="pb-3 text-right font-medium">Actions</th>
           </tr>
         </thead>

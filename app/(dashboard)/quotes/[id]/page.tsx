@@ -100,7 +100,11 @@ export default async function QuoteDetailPage({
             {client?.address && <p className="text-slate-600">{client.address}</p>}
             {client?.email && <p>{client.email}</p>}
             {client?.phone && <p>{client.phone}</p>}
-            {client?.siret && <p>SIRET : {client.siret}</p>}
+            {client?.siret && (
+              <p>
+                {(client.siret.replace(/\s/g, "").length === 9 ? "SIREN" : "SIRET")} : {client.siret}
+              </p>
+            )}
           </CardContent>
         </Card>
         <Card>

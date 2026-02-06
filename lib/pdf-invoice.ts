@@ -140,7 +140,9 @@ export function generatePdf(data: DocData): jsPDF {
     y += 5;
   }
   if (data.client.siret) {
-    doc.text(`SIRET : ${data.client.siret}`, 20, y);
+    const num = data.client.siret.replace(/\s/g, "");
+    const label = num.length === 9 ? "SIREN" : "SIRET";
+    doc.text(`${label} : ${data.client.siret}`, 20, y);
     y += 5;
   }
   y += 10;

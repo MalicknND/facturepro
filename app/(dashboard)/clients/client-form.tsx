@@ -18,7 +18,13 @@ const schema = z.object({
   address: z.string().optional(),
   email: z.string().email("Email invalide").optional().or(z.literal("")),
   phone: z.string().optional(),
-  siret: z.string().optional(),
+  siret: z
+    .string()
+    .optional()
+    .refine(
+      (s) => !s || /^\d{9}$|^\d{14}$/.test((s || "").replace(/\s/g, "")),
+      "9 (SIREN) ou 14 (SIRET) chiffres"
+    ),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -67,7 +73,7 @@ export function ClientForm({
       address: data.address || null,
       email: data.email || null,
       phone: data.phone || null,
-      siret: data.siret || null,
+      siret: data.siret?.replace(/\s/g, "") || null,
       updated_at: new Date().toISOString(),
     };
     if (client) {
@@ -156,9 +162,9 @@ export function ClientForm({
       </div>
       <div>
         <Label htmlFor="siret">
-          SIRET {isCompany ? "(recommandé pour une entreprise)" : "(optionnel)"}
+          SIRET / SIREN {isCompany ? "(recommandé pour une entreprise)" : "(optionnel)"}
         </Label>
-        <Input id="siret" {...register("siret")} className="mt-1" placeholder="14 chiffres" />
+        <Input id="siret" {...register("siret")} className="mt-1" placeholder="9 (SIREN) ou 14 (SIRET) chiffres" />
       </div>
       <div className="flex flex-wrap gap-2 pt-2">
         <Button type="submit" disabled={isSubmitting}>
