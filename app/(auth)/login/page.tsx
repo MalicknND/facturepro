@@ -32,17 +32,17 @@ export default function LoginPage() {
   }
 
   return (
-    <Card className="w-full max-w-md animate-fade-in">
+    <Card className="w-full max-w-md animate-fade-in border-slate-200/80 shadow-lg">
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl">FacturePro</CardTitle>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <CardTitle className="text-2xl font-bold tracking-tight text-slate-900">FacturePro</CardTitle>
+        <p className="text-sm text-slate-500">
           Connectez-vous pour accéder à votre espace
         </p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
-            <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/30 dark:text-red-300">
+            <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
               {error}
             </div>
           )}
@@ -74,7 +74,7 @@ export default function LoginPage() {
           </Button>
           <p className="text-center text-sm text-slate-500">
             Pas encore de compte ?{" "}
-            <Link href="/signup" className="text-emerald-600 hover:underline dark:text-emerald-400">
+            <Link href="/signup" className="font-medium text-emerald-600 hover:underline">
               Créer un compte
             </Link>
           </p>

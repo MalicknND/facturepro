@@ -8,7 +8,7 @@ const Label = forwardRef<HTMLLabelElement, LabelHTMLAttributes<HTMLLabelElement>
     <label
       ref={ref}
       className={cn(
-        "text-sm font-medium text-slate-700 dark:text-slate-300",
+        "text-sm font-medium text-slate-700",
         className
       )}
       {...props}

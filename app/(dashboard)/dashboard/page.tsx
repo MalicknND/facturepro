@@ -49,7 +49,7 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+        <h1 className="text-2xl font-bold text-slate-900">
           Tableau de bord
         </h1>
         <div className="flex gap-2">
@@ -65,44 +65,44 @@ export default async function DashboardPage() {
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-500 dark:text-slate-400">
+            <CardTitle className="text-sm font-medium text-slate-500">
               Factures ce mois
             </CardTitle>
             <FileText className="h-4 w-4 text-slate-400" />
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-bold">{invoicesThisMonth.length}</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500">
               Émises en {new Date().toLocaleDateString("fr-FR", { month: "long", year: "numeric" })}
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-500 dark:text-slate-400">
+            <CardTitle className="text-sm font-medium text-slate-500">
               Chiffre d&apos;affaires
             </CardTitle>
             <TrendingUp className="h-4 w-4 text-emerald-500" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+            <p className="text-2xl font-bold text-emerald-600">
               {formatCurrency(caThisMonth)}
             </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">HT ce mois</p>
+            <p className="text-xs text-slate-500">HT ce mois</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-500 dark:text-slate-400">
+            <CardTitle className="text-sm font-medium text-slate-500">
               Impayés
             </CardTitle>
             <AlertCircle className="h-4 w-4 text-amber-500" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-amber-600 dark:text-amber-400">
+            <p className="text-2xl font-bold text-amber-600">
               {formatCurrency(unpaidAmount)}
             </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-500">
               {unpaid.length} facture(s) en retard
             </p>
           </CardContent>
@@ -121,7 +121,7 @@ export default async function DashboardPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
+                  <tr className="border-b border-slate-200">
                     <th className="pb-3 text-left font-medium">N°</th>
                     <th className="pb-3 text-left font-medium">Date</th>
                     <th className="pb-3 text-left font-medium">Échéance</th>
@@ -131,19 +131,19 @@ export default async function DashboardPage() {
                 </thead>
                 <tbody>
                   {invoices.slice(0, 5).map((inv) => (
-                    <tr key={inv.id} className="border-b border-slate-100 dark:border-slate-700/50">
+                    <tr key={inv.id} className="border-b border-slate-100/50">
                       <td className="py-3">
                         <Link
                           href={`/invoices/${inv.id}`}
-                          className="font-medium text-emerald-600 hover:underline dark:text-emerald-400"
+                          className="font-medium text-emerald-600 hover:underline"
                         >
                           {inv.number}
                         </Link>
                       </td>
-                      <td className="py-3 text-slate-600 dark:text-slate-400">
+                      <td className="py-3 text-slate-600">
                         {formatDate(inv.issue_date)}
                       </td>
-                      <td className="py-3 text-slate-600 dark:text-slate-400">
+                      <td className="py-3 text-slate-600">
                         {formatDate(inv.due_date)}
                       </td>
                       <td className="py-3 text-right">
@@ -158,9 +158,9 @@ export default async function DashboardPage() {
               </table>
             </div>
           ) : (
-            <p className="py-8 text-center text-slate-500 dark:text-slate-400">
+            <p className="py-8 text-center text-slate-500">
               Aucune facture.{" "}
-              <Link href="/invoices/new" className="text-emerald-600 hover:underline dark:text-emerald-400">
+              <Link href="/invoices/new" className="text-emerald-600 hover:underline">
                 Créer une facture
               </Link>
             </p>

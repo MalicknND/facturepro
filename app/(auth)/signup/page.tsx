@@ -37,9 +37,9 @@ export default function SignupPage() {
 
   if (success) {
     return (
-      <Card className="w-full max-w-md animate-fade-in">
+      <Card className="w-full max-w-md animate-fade-in border-slate-200/80 shadow-lg">
         <CardContent className="pt-6">
-          <p className="text-center text-emerald-600 dark:text-emerald-400">
+          <p className="text-center font-medium text-emerald-600">
             Compte créé. Vérifiez votre email si la confirmation est activée, puis connectez-vous.
           </p>
           <p className="mt-2 text-center text-sm text-slate-500">
@@ -51,17 +51,17 @@ export default function SignupPage() {
   }
 
   return (
-    <Card className="w-full max-w-md animate-fade-in">
+    <Card className="w-full max-w-md animate-fade-in border-slate-200/80 shadow-lg">
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl">FacturePro</CardTitle>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <CardTitle className="text-2xl font-bold tracking-tight text-slate-900">FacturePro</CardTitle>
+        <p className="text-sm text-slate-500">
           Créer un compte
         </p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
-            <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700 dark:bg-red-900/30 dark:text-red-300">
+            <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
               {error}
             </div>
           )}
@@ -95,7 +95,7 @@ export default function SignupPage() {
           </Button>
           <p className="text-center text-sm text-slate-500">
             Déjà un compte ?{" "}
-            <Link href="/login" className="text-emerald-600 hover:underline dark:text-emerald-400">
+            <Link href="/login" className="font-medium text-emerald-600 hover:underline">
               Se connecter
             </Link>
           </p>

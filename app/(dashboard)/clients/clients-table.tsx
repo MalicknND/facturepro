@@ -6,7 +6,7 @@ import type { Client } from "@/types/database";
 export function ClientsTable({ clients }: { clients: Client[] }) {
   if (!clients.length) {
     return (
-      <p className="py-12 text-center text-slate-500 dark:text-slate-400">
+      <p className="py-12 text-center text-slate-500">
         Aucun client. Créez votre premier client pour commencer.
       </p>
     );
@@ -15,7 +15,7 @@ export function ClientsTable({ clients }: { clients: Client[] }) {
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-slate-200 dark:border-slate-700">
+          <tr className="border-b border-slate-200">
             <th className="pb-3 text-left font-medium">Nom</th>
             <th className="pb-3 text-left font-medium">Email</th>
             <th className="pb-3 text-left font-medium">Téléphone</th>
@@ -27,29 +27,29 @@ export function ClientsTable({ clients }: { clients: Client[] }) {
           {clients.map((c) => (
             <tr
               key={c.id}
-              className="border-b border-slate-100 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-800/30"
+              className="border-b border-slate-100 hover:bg-slate-50"
             >
               <td className="py-3">
                 <Link
                   href={`/clients/${c.id}/edit`}
-                  className="font-medium text-emerald-600 hover:underline dark:text-emerald-400"
+                  className="font-medium text-emerald-600 hover:underline"
                 >
                   {c.name}
                 </Link>
               </td>
-              <td className="py-3 text-slate-600 dark:text-slate-400">
+              <td className="py-3 text-slate-600">
                 {c.email ?? "—"}
               </td>
-              <td className="py-3 text-slate-600 dark:text-slate-400">
+              <td className="py-3 text-slate-600">
                 {c.phone ?? "—"}
               </td>
-              <td className="py-3 text-slate-600 dark:text-slate-400">
+              <td className="py-3 text-slate-600">
                 {c.siret ?? "—"}
               </td>
               <td className="py-3 text-right">
                 <Link
                   href={`/invoices/new?client=${c.id}`}
-                  className="text-sm text-emerald-600 hover:underline dark:text-emerald-400"
+                  className="text-sm text-emerald-600 hover:underline"
                 >
                   Nouvelle facture
                 </Link>

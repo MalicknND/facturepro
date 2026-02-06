@@ -19,10 +19,10 @@ const buttonClasses = (
     {
       primary:
         "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm",
-      secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700 focus:ring-slate-400",
+      secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200 focus:ring-slate-400",
       outline:
-        "border-2 border-slate-300 bg-transparent hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-800 focus:ring-slate-400",
-      ghost: "hover:bg-slate-100 dark:hover:bg-slate-800 focus:ring-slate-400",
+        "border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 focus:ring-slate-400",
+      ghost: "hover:bg-slate-100 focus:ring-slate-400",
       danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
     }[variant],
     {

@@ -39,7 +39,7 @@ export default async function QuotesPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+        <h1 className="text-2xl font-bold text-slate-900">
           Devis
         </h1>
         <Button asChild>
@@ -59,7 +59,7 @@ export default async function QuotesPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700">
+                  <tr className="border-b border-slate-200">
                     <th className="pb-3 text-left font-medium">N°</th>
                     <th className="pb-3 text-left font-medium">Client</th>
                     <th className="pb-3 text-left font-medium">Date</th>
@@ -75,20 +75,20 @@ export default async function QuotesPage() {
                     return (
                       <tr
                         key={q.id}
-                        className="border-b border-slate-100 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-800/30"
+                        className="border-b border-slate-100 hover:bg-slate-50"
                       >
                         <td className="py-3">
                           <Link
                             href={`/quotes/${q.id}`}
-                            className="font-medium text-emerald-600 hover:underline dark:text-emerald-400"
+                            className="font-medium text-emerald-600 hover:underline"
                           >
                             {q.number}
                           </Link>
                         </td>
-                        <td className="py-3 text-slate-600 dark:text-slate-400">
+                        <td className="py-3 text-slate-600">
                           {(q.client as { name?: string })?.name ?? "—"}
                         </td>
-                        <td className="py-3 text-slate-600 dark:text-slate-400">
+                        <td className="py-3 text-slate-600">
                           {formatDate(q.issue_date)}
                         </td>
                         <td className="py-3 text-right font-medium">
@@ -100,7 +100,7 @@ export default async function QuotesPage() {
                         <td className="py-3 text-right">
                           <Link
                             href={`/quotes/${q.id}`}
-                            className="text-emerald-600 hover:underline dark:text-emerald-400"
+                            className="text-emerald-600 hover:underline"
                           >
                             Voir
                           </Link>
@@ -112,9 +112,9 @@ export default async function QuotesPage() {
               </table>
             </div>
           ) : (
-            <p className="py-12 text-center text-slate-500 dark:text-slate-400">
+            <p className="py-12 text-center text-slate-500">
               Aucun devis.{" "}
-              <Link href="/quotes/new" className="text-emerald-600 hover:underline dark:text-emerald-400">
+              <Link href="/quotes/new" className="text-emerald-600 hover:underline">
                 Créer un devis
               </Link>
             </p>

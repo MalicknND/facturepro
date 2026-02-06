@@ -24,7 +24,7 @@ export default async function NewClientPage() {
       <Card className="max-w-2xl">
         <CardHeader>
           <CardTitle>Nouveau client</CardTitle>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-slate-500">
             Renseignez les informations du client
           </p>
         </CardHeader>

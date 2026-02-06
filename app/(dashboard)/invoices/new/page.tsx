@@ -52,7 +52,7 @@ export default async function NewInvoicePage({
       <Card>
         <CardHeader>
           <CardTitle>Nouvelle facture</CardTitle>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-slate-500">
             Remplissez les lignes et enregistrez en brouillon ou validez
           </p>
         </CardHeader>

@@ -36,7 +36,7 @@ export default async function NewQuotePage() {
       <Card>
         <CardHeader>
           <CardTitle>Nouveau devis</CardTitle>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-slate-500">
             Remplissez les lignes et enregistrez ou validez
           </p>
         </CardHeader>

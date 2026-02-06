@@ -85,7 +85,7 @@ export function ClientForm({
         <Label htmlFor="name">Nom *</Label>
         <Input id="name" {...register("name")} className="mt-1" />
         {errors.name && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name.message}</p>
+          <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
         )}
       </div>
       <div>
@@ -96,7 +96,7 @@ export function ClientForm({
         <Label htmlFor="email">Email</Label>
         <Input id="email" type="email" {...register("email")} className="mt-1" />
         {errors.email && (
-          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email.message}</p>
+          <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
         )}
       </div>
       <div>

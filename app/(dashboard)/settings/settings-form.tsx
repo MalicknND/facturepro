@@ -123,7 +123,7 @@ export function SettingsForm({
           <Label htmlFor="name">Nom de l&apos;entreprise *</Label>
           <Input id="name" {...register("name")} className="mt-1" />
           {errors.name && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name.message}</p>
+            <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
           )}
         </div>
         <div>
@@ -149,7 +149,7 @@ export function SettingsForm({
           <Label htmlFor="email">Email</Label>
           <Input id="email" type="email" {...register("email")} className="mt-1" />
           {errors.email && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email.message}</p>
+            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
           )}
         </div>
         <div>
@@ -158,7 +158,7 @@ export function SettingsForm({
         </div>
       </div>
 
-      <div className="rounded-lg border border-slate-200 p-4 dark:border-slate-700">
+      <div className="rounded-lg border border-slate-200 p-4">
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -178,7 +178,7 @@ export function SettingsForm({
 
       <div>
         <CardTitle className="text-base">Conditions de paiement</CardTitle>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-sm text-slate-500">
           Délai en jours, pénalités de retard, indemnité forfaitaire
         </p>
         <div className="mt-3 grid gap-4 sm:grid-cols-3">
@@ -203,7 +203,7 @@ export function SettingsForm({
           id="legal_mention"
           {...register("legal_mention")}
           rows={4}
-          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
+          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
           placeholder="Ex. : SAS au capital de... RCS... Conditions de paiement..."
         />
       </div>

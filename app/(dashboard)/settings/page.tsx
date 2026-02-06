@@ -16,13 +16,13 @@ export default async function SettingsPage() {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+      <h1 className="text-2xl font-bold text-slate-900">
         Paramètres
       </h1>
       <Card>
         <CardHeader>
           <CardTitle>Profil entreprise</CardTitle>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-slate-500">
             Nom, adresse, logo et mentions légales utilisés sur les factures et devis
           </p>
         </CardHeader>

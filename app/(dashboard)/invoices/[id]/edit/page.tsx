@@ -56,7 +56,7 @@ export default async function EditInvoicePage({
       <Card>
         <CardHeader>
           <CardTitle>Modifier la facture {invoice.number}</CardTitle>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-slate-500">
             Statut : Brouillon — les modifications sont autorisées
           </p>
         </CardHeader>

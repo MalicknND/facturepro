@@ -38,7 +38,7 @@ export default async function EditClientPage({
       <Card className="max-w-2xl">
         <CardHeader>
           <CardTitle>Modifier le client</CardTitle>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-sm text-slate-500">
             {client.name}
           </p>
         </CardHeader>

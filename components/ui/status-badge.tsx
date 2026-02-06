@@ -16,12 +16,12 @@ const quoteLabels: Record<QuoteStatus, string> = {
 };
 
 const statusColors: Record<string, string> = {
-  draft: "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300",
-  sent: "bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300",
-  accepted: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
-  rejected: "bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300",
-  paid: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300",
-  overdue: "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300",
+  draft: "bg-slate-100 text-slate-700",
+  sent: "bg-blue-100 text-blue-800",
+  accepted: "bg-emerald-100 text-emerald-800",
+  rejected: "bg-red-100 text-red-800",
+  paid: "bg-emerald-100 text-emerald-800",
+  overdue: "bg-amber-100 text-amber-800",
 };
 
 export function InvoiceStatusBadge({ status }: { status: InvoiceStatus }) {

@@ -197,7 +197,7 @@ export function QuoteForm({
           <Label>Client *</Label>
           <select
             {...register("client_id")}
-            className="mt-1 flex h-10 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
+            className="mt-1 flex h-10 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
           >
             <option value="">Sélectionner</option>
             {clients.map((c) => (
@@ -205,7 +205,7 @@ export function QuoteForm({
             ))}
           </select>
           {errors.client_id && (
-            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.client_id.message}</p>
+            <p className="mt-1 text-sm text-red-600">{errors.client_id.message}</p>
           )}
         </div>
         <div className="flex gap-4">
@@ -230,10 +230,10 @@ export function QuoteForm({
             <Plus className="h-4 w-4" /> Ligne
           </Button>
         </div>
-        <div className="mt-2 overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-700">
+        <div className="mt-2 overflow-x-auto rounded-lg border border-slate-200">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/50">
+              <tr className="border-b border-slate-200 bg-slate-50">
                 <th className="p-2 text-left font-medium">Description</th>
                 <th className="w-24 p-2 text-right font-medium">Qté</th>
                 <th className="w-32 p-2 text-right font-medium">Prix unit. HT</th>
@@ -243,7 +243,7 @@ export function QuoteForm({
             </thead>
             <tbody>
               {lines.map((line) => (
-                <tr key={line.id} className="border-b border-slate-100 dark:border-slate-700/50">
+                <tr key={line.id} className="border-b border-slate-100">
                   <td className="p-2">
                     <Input
                       value={line.description}
@@ -272,11 +272,11 @@ export function QuoteForm({
                       className="w-full border-0 bg-transparent text-right focus-visible:ring-1"
                     />
                   </td>
-                  <td className="p-2 text-right text-slate-600 dark:text-slate-400">
+                  <td className="p-2 text-right text-slate-600">
                     {formatCurrency(line.quantity * line.unit_price)}
                   </td>
                   <td className="p-2">
-                    <button type="button" onClick={() => removeLine(line.id)} className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-red-600 dark:hover:bg-slate-700" aria-label="Supprimer">
+                    <button type="button" onClick={() => removeLine(line.id)} className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-red-600" aria-label="Supprimer">
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </td>
@@ -286,7 +286,7 @@ export function QuoteForm({
           </table>
         </div>
       </div>
-      <div className="flex flex-col items-end gap-2 rounded-lg bg-slate-50 p-4 dark:bg-slate-800/50">
+      <div className="flex flex-col items-end gap-2 rounded-lg bg-slate-50 p-4">
         <div className="flex w-64 justify-between text-sm">
           <span>Sous-total HT</span>
           <span>{formatCurrency(totals.subtotalHT)}</span>
@@ -305,7 +305,7 @@ export function QuoteForm({
         <textarea
           {...register("note")}
           rows={2}
-          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
+          className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
         />
       </div>
       <div className="flex flex-wrap gap-2">

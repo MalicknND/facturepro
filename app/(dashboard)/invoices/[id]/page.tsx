@@ -53,10 +53,10 @@ export default async function InvoiceDetailPage({
             </Link>
           </Button>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+            <h1 className="text-2xl font-bold text-slate-900">
               {invoice.number}
             </h1>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-500">
               Facture · {client?.name}
             </p>
           </div>
@@ -88,7 +88,7 @@ export default async function InvoiceDetailPage({
           </CardHeader>
           <CardContent className="space-y-1 text-sm">
             <p className="font-medium">{client?.name}</p>
-            {client?.address && <p className="text-slate-600 dark:text-slate-400">{client.address}</p>}
+            {client?.address && <p className="text-slate-600">{client.address}</p>}
             {client?.email && <p>{client.email}</p>}
             {client?.phone && <p>{client.phone}</p>}
             {client?.siret && <p>SIRET : {client.siret}</p>}
@@ -100,15 +100,15 @@ export default async function InvoiceDetailPage({
           </CardHeader>
           <CardContent className="space-y-2 text-sm">
             <p>
-              <span className="text-slate-500 dark:text-slate-400">Date d&apos;émission :</span>{" "}
+              <span className="text-slate-500">Date d&apos;émission :</span>{" "}
               {formatDate(invoice.issue_date)}
             </p>
             <p>
-              <span className="text-slate-500 dark:text-slate-400">Date d&apos;échéance :</span>{" "}
+              <span className="text-slate-500">Date d&apos;échéance :</span>{" "}
               {formatDate(invoice.due_date)}
             </p>
             <p>
-              <span className="text-slate-500 dark:text-slate-400">TVA :</span> {invoice.vat_rate}%
+              <span className="text-slate-500">TVA :</span> {invoice.vat_rate}%
             </p>
           </CardContent>
         </Card>
@@ -122,7 +122,7 @@ export default async function InvoiceDetailPage({
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-700">
+                <tr className="border-b border-slate-200">
                   <th className="pb-3 text-left font-medium">Description</th>
                   <th className="pb-3 text-right font-medium">Quantité</th>
                   <th className="pb-3 text-right font-medium">Prix unitaire HT</th>
@@ -131,7 +131,7 @@ export default async function InvoiceDetailPage({
               </thead>
               <tbody>
                 {sortedLines.map((l) => (
-                  <tr key={l.id} className="border-b border-slate-100 dark:border-slate-700/50">
+                  <tr key={l.id} className="border-b border-slate-100">
                     <td className="py-3">{l.description}</td>
                     <td className="py-3 text-right">{l.quantity}</td>
                     <td className="py-3 text-right">{formatCurrency(l.unit_price)}</td>
@@ -143,7 +143,7 @@ export default async function InvoiceDetailPage({
               </tbody>
             </table>
           </div>
-          <div className="mt-4 flex flex-col items-end gap-1 rounded-lg bg-slate-50 p-4 dark:bg-slate-800/50">
+          <div className="mt-4 flex flex-col items-end gap-1 rounded-lg bg-slate-50 p-4">
             <div className="flex w-56 justify-between text-sm">
               <span>Sous-total HT</span>
               <span>{formatCurrency(subtotalHT)}</span>
