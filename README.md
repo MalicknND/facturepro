@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FacturePro
 
-## Getting Started
+Application web (FR) pour générer des devis et factures en tant que freelance.
 
-First, run the development server:
+## Fonctionnalités MVP
+
+- **Auth** : Connexion email / mot de passe (Supabase Auth)
+- **Dashboard** : KPIs (factures du mois, impayés, CA)
+- **Clients** : CRUD, recherche, lien « Nouvelle facture »
+- **Devis** : Lignes dynamiques, numérotation D-YYYY-0001, statuts (Brouillon, Envoyé, Accepté, Refusé), **Convertir en facture**
+- **Factures** : Lignes dynamiques, numérotation F-YYYY-0001, dates émission/échéance, statuts, **Télécharger PDF**
+- **Paramètres** : Profil entreprise, logo, TVA (dont franchise art. 293 B), conditions de paiement, mentions légales
+- **PDF** : Template A4 (logo, en-tête, client, tableau, totaux HT/TVA/TTC, mentions)
+
+## Prérequis
+
+- Node.js 18+
+- Compte [Supabase](https://supabase.com)
+
+## Installation
+
+```bash
+npm install
+cp .env.example .env
+```
+
+1. Créez un projet Supabase, récupérez l’URL et la clé anon (Settings > API).
+2. Renseignez `.env` :
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. Dans l’éditeur SQL Supabase, exécutez le schéma : `supabase/schema.sql`
+4. (Optionnel) Créez un bucket Storage `logos` (public) pour les logos entreprise, ou laissez le schéma le créer.
+5. Créez un utilisateur : Auth > Users > Add user (email + mot de passe) ou inscrivez-vous depuis l’app (`/login` avec un lien « S’inscrire » si vous l’ajoutez).
+
+## Lancer l’app
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000). Vous serez redirigé vers `/login` puis, après connexion, vers `/dashboard`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Parcours rapide (créer une facture en &lt; 2 min)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Paramètres** : Renseigner au moins le nom de l’entreprise (et optionnellement logo, TVA, mentions).
+2. **Clients** : Créer un client (nom, email, etc.).
+3. **Factures** > **Nouvelle facture** : Choisir le client, ajouter des lignes (description, quantité, prix unitaire). Les totaux se calculent automatiquement.
+4. Cliquer **Valider** (ou **Enregistrer brouillon** puis modifier).
+5. Sur la page de la facture : **Télécharger PDF**.
 
-## Learn More
+## Données de démo
 
-To learn more about Next.js, take a look at the following resources:
+Voir `supabase/seed.sql` pour un exemple de profil entreprise et clients. Remplacez `YOUR_USER_ID` / `USER_ID` par l’UUID de votre utilisateur (Auth > Users dans Supabase) avant d’exécuter les inserts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Structure des routes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Route | Description |
+|-------|-------------|
+| `/login` | Connexion |
+| `/dashboard` | Tableau de bord (KPIs, dernières factures) |
+| `/clients` | Liste + recherche |
+| `/clients/new` | Nouveau client |
+| `/clients/[id]/edit` | Modifier client |
+| `/invoices` | Liste factures |
+| `/invoices/new` | Nouvelle facture |
+| `/invoices/[id]` | Détail + PDF |
+| `/invoices/[id]/edit` | Modifier (brouillon uniquement) |
+| `/quotes` | Liste devis |
+| `/quotes/new` | Nouveau devis |
+| `/quotes/[id]` | Détail + PDF + Convertir en facture |
+| `/quotes/[id]/edit` | Modifier devis (brouillon) |
+| `/settings` | Profil entreprise, TVA, conditions, mentions |
 
-## Deploy on Vercel
+## Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js 16** (App Router), TypeScript, Tailwind CSS
+- **Supabase** : Auth, PostgreSQL, Storage (logos)
+- **Formulaires** : react-hook-form, zod, @hookform/resolvers
+- **PDF** : jspdf, jspdf-autotable
