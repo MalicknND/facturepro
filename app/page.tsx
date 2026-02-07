@@ -8,6 +8,7 @@ import { LandingHero } from "@/components/landing/landing-hero";
 import { LandingFeatures } from "@/components/landing/landing-features";
 import { LandingCompliance } from "@/components/landing/landing-compliance";
 import { LandingFooter } from "@/components/landing/landing-footer";
+import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Devis et factures en quelques clics pour freelances",
