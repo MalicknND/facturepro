@@ -125,8 +125,8 @@ export default async function DashboardPage() {
                     <th className="pb-3 text-left font-medium">N°</th>
                     <th className="pb-3 text-left font-medium">Date</th>
                     <th className="pb-3 text-left font-medium">Échéance</th>
-                    <th className="pb-3 text-right font-medium">Total HT</th>
-                    <th className="pb-3 text-left font-medium">Statut</th>
+                    <th className="pb-3 pr-4 text-right font-medium">Total HT</th>
+                    <th className="pb-3 pl-2 text-left font-medium">Statut</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -146,10 +146,10 @@ export default async function DashboardPage() {
                       <td className="py-3 text-slate-600">
                         {formatDate(inv.due_date)}
                       </td>
-                      <td className="py-3 text-right">
+                      <td className="py-3 pr-4 text-right">
                         {formatCurrency(linesByInvoice[inv.id] || 0)}
                       </td>
-                      <td className="py-3">
+                      <td className="py-3 pl-2">
                         <InvoiceStatusBadge status={inv.status as import("@/types/database").InvoiceStatus} />
                       </td>
                     </tr>
