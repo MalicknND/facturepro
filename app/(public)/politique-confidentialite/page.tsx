@@ -236,21 +236,6 @@ export default function PolitiqueConfidentialitePage() {
             </p>
           </section>
         </div>
-
-        <div className="mt-12 flex flex-wrap gap-4">
-          <Link
-            href="/"
-            className="inline-flex items-center text-emerald-600 hover:underline"
-          >
-            ← Retour à l&apos;accueil
-          </Link>
-          <Link
-            href="/mentions-legales"
-            className="inline-flex items-center text-slate-600 hover:text-slate-900"
-          >
-            Mentions légales
-          </Link>
-        </div>
       </main>
     </div>
   );

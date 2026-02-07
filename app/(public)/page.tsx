@@ -7,7 +7,6 @@ import { AnimatedGradient } from "@/components/aceternity/animated-gradient";
 import { LandingHero } from "@/components/landing/landing-hero";
 import { LandingFeatures } from "@/components/landing/landing-features";
 import { LandingCompliance } from "@/components/landing/landing-compliance";
-import { LandingFooter } from "@/components/landing/landing-footer";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
@@ -65,7 +64,7 @@ export default function HomePage() {
 
       {/* Réassurance légale France */}
       <section
-        className="border-t border-slate-200/80 bg-white px-4 py-20 md:py-24"
+        className="relative border-t border-slate-200/80 bg-white px-4 py-20 md:py-24"
         aria-labelledby="compliance-heading"
       >
         <div className="mx-auto max-w-6xl">
@@ -75,7 +74,7 @@ export default function HomePage() {
 
       {/* CTA final */}
       <section
-        className="border-t border-slate-200/80 bg-slate-50 px-4 py-20 md:py-24"
+        className="relative border-t border-slate-200/80 bg-slate-50 px-4 py-20 md:py-24"
         aria-labelledby="cta-heading"
       >
         <AnimatedGradient className="mx-auto max-w-3xl p-8 md:p-12">
@@ -108,8 +107,6 @@ export default function HomePage() {
           </div>
         </AnimatedGradient>
       </section>
-
-      <LandingFooter />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { LandingHeader } from "@/components/landing-header";
 import { ContactForm } from "@/components/contact-form";
 
@@ -40,27 +39,6 @@ export default function ContactPage() {
           . Pour toute question relative à vos données personnelles (RGPD),
           indiquez-le dans votre message.
         </p>
-
-        <div className="mt-12 flex flex-wrap gap-4">
-          <Link
-            href="/"
-            className="inline-flex items-center text-emerald-600 hover:underline"
-          >
-            ← Retour à l&apos;accueil
-          </Link>
-          <Link
-            href="/mentions-legales"
-            className="inline-flex items-center text-slate-600 hover:text-slate-900"
-          >
-            Mentions légales
-          </Link>
-          <Link
-            href="/politique-confidentialite"
-            className="inline-flex items-center text-slate-600 hover:text-slate-900"
-          >
-            Politique de confidentialité
-          </Link>
-        </div>
       </main>
     </div>
   );
