@@ -46,6 +46,8 @@ Créez un fichier `.env.local` à la racine (ou copiez `.env.example` si présen
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://votre-projet.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=votre_cle_anon
+# Optionnel : URL du site pour le SEO (Open Graph, canonical). Par défaut : https://facturepro-beta.vercel.app
+# NEXT_PUBLIC_SITE_URL=https://facturepro-beta.vercel.app
 ```
 
 Récupérez l’URL et la clé anon dans Supabase : **Settings → API**.

@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { LandingHeader } from "@/components/landing-header";
+
+export const metadata: Metadata = {
+  title: "Politique de confidentialité",
+  description: "Politique de confidentialité de FacturePro : données collectées, finalités, droits RGPD.",
+};
 
 export default function PolitiqueConfidentialitePage() {
   return (

@@ -14,8 +14,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FacturePro - Devis & Factures",
-  description: "Générez vos devis et factures en tant que freelance",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://facturepro-beta.vercel.app"),
+  title: {
+    default: "FacturePro - Devis & Factures pour freelances",
+    template: "%s | FacturePro",
+  },
+  description:
+    "Créez vos devis et factures en quelques clics. Outil de facturation pour freelances : clients, PDF, tableau de bord, conforme à la réglementation française.",
+  keywords: [
+    "devis",
+    "facture",
+    "freelance",
+    "facturation",
+    "auto-entrepreneur",
+    "PDF",
+    "devis en ligne",
+    "facture PDF",
+  ],
+  authors: [{ name: "FacturePro" }],
+  creator: "FacturePro",
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    title: "FacturePro - Devis & Factures pour freelances",
+    description:
+      "Créez vos devis et factures en quelques clics. Tableau de bord, export PDF, gestion clients. Conforme à la réglementation française.",
+    siteName: "FacturePro",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FacturePro - Devis & Factures pour freelances",
+    description: "Créez vos devis et factures en quelques clics. Pour freelances et auto-entrepreneurs.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

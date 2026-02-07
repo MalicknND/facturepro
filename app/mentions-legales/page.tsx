@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { LandingHeader } from "@/components/landing-header";
+
+export const metadata: Metadata = {
+  title: "Mentions légales",
+  description: "Mentions légales de FacturePro : éditeur, hébergeur, conditions d'utilisation.",
+};
 
 export default function MentionsLegalesPage() {
   return (

@@ -213,13 +213,13 @@ npm run build
 npm run start
 ```
 
-Variables d’environnement en production : `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` (ex. Vercel, variables d’environnement).
+Variables d’environnement en production : `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` (ex. Vercel). Optionnel : `NEXT_PUBLIC_SITE_URL` (ex. `https://facturepro-beta.vercel.app`) pour les métadonnées SEO.
 
 ### Supabase
 
 - Conserver les mêmes URL et clé anon que en dev, ou créer un projet Supabase dédié à la prod.
 - Exécuter le schéma (et les migrations) sur la base de production.
-- Vérifier les **URL autorisées** dans Supabase (Authentication → URL Configuration) pour le domaine de production.
+- Vérifier les **URL autorisées** dans Supabase (Authentication → URL Configuration), par ex. `https://facturepro-beta.vercel.app`.
 
 ### Recommandations
 

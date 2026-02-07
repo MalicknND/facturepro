@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { LandingHeader } from "@/components/landing-header";
@@ -7,6 +8,17 @@ import { LandingHero } from "@/components/landing/landing-hero";
 import { LandingFeatures } from "@/components/landing/landing-features";
 import { LandingCompliance } from "@/components/landing/landing-compliance";
 import { LandingFooter } from "@/components/landing/landing-footer";
+
+export const metadata: Metadata = {
+  title: "Devis et factures en quelques clics pour freelances",
+  description:
+    "FacturePro : créez vos devis et factures en moins de 2 minutes. Gestion clients, export PDF, numérotation automatique, conforme à la réglementation française. Pour freelances et auto-entrepreneurs.",
+  openGraph: {
+    title: "FacturePro - Devis et factures en quelques clics pour freelances",
+    description:
+      "Créez vos devis et factures en moins de 2 minutes. Tableau de bord, PDF, gestion clients. Conforme France.",
+  },
+};
 
 export default function HomePage() {
   return (

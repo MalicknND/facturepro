@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { LandingHeader } from "@/components/landing-header";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Contactez FacturePro pour toute question sur l'outil de devis et factures pour freelances.",
+};
 
 export default function ContactPage() {
   return (
